@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: mysql_57
+    image: mysql/mysql-server:5.7
+    restart: always
+    command:
+      --lower_case_table_names=1
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --explicit_defaults_for_timestamp=true
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: learn
+      MYSQL_ROOT_PASSWORD: admin
+      TZ: Asia/Shanghai
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/config:/etc/mysql/conf.d
+      - ./mysql/log:/var/log/mysql
+    ports:
+      - 3306:3306
+    network_mode: host
