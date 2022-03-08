@@ -8,11 +8,11 @@
         values (#{serial});
     </insert>
 
-    <resultMap id="BaseResultMap" type="com.niici.springcloud.entity.Payment">
+    <resultMap id="payment" type="com.niici.springcloud.entity.Payment">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <id column="serial" property="serial" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="queryById" parameterType="Long" resultMap="BaseResultMap">
+    <select id="queryById" parameterType="Long" resultMap="payment">
         select * from tbl_pay_ment where id=#{id};
     </select>
 
