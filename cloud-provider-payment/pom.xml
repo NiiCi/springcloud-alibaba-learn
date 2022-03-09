@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.niici.springcloud</groupId>
             <artifactId>cloud-commons</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
