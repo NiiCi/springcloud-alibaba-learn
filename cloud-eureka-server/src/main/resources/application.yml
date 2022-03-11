@@ -11,5 +11,5 @@ eureka:
     fetch-registry: false
     service-url:
       # 设置与eureka server交互的地址，查询服务和注册服务都使用这个地址
-      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 
