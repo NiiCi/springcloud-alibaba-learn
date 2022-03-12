@@ -1,0 +1,17 @@
+server:
+  port: 7002
+eureka:
+  instance:
+    hostname: eurekaServerSlave.com
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      # 需要配合修改主机的hosts文件, 添加主机映射
+
+      # 配置eureka集群: 有7001和7002两个eureka服务
+      # 1. 修改eureka.instance.hostname，如修改为eurekaServerSlave.com
+      # 2. 修改主机hosts文件，添加主机映射  127.0.0.1 eurekaServer.com  127.0.0.1 eurekaServerSlave.com
+      # 3. 修改yml文件，互相注册，eurekaServer注册到eurekaServerSlave上，eurekaServerSlave注册到eurekaServer上
+      # defaultZone: http://eurekaServer.com:7001/eureka   defaultZone: http://eurekaServerSlave.com:7001/eureka
+      defaultZone: http://eurekaServer.com:7001/eureka
