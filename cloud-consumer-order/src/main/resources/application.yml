@@ -13,4 +13,5 @@ eureka:
     # 拉取eureka中的服务
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      # defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eurekaServer.com:7001/eureka, http://eurekaServerSlave.com:7001/eureka

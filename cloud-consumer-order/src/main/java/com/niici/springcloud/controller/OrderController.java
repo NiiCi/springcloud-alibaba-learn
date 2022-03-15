@@ -18,7 +18,13 @@ public class OrderController {
 
     private static final String QUERY_PAY_MENT_URL = "/payment/query/";
 
-    private static final String HOST = "http://localhost:8001";
+    //private static final String HOST = "http://localhost:8001";
+
+    /**
+     * 调用eureka中注册的payment服务
+     * 需要配合@LoadBalanced注解使用，加在restTemplate上，实现负载均衡，否则会报unknowhostException
+     */
+    private static final String HOST = "http://payment-service";
 
     @PostMapping("/addPayment")
     public CommonResult addPayment(@RequestBody Payment payment) {
