@@ -15,3 +15,8 @@ eureka:
       # 3. 修改yml文件，互相注册，eurekaServer注册到eurekaServerSlave上，eurekaServerSlave注册到eurekaServer上
       # defaultZone: http://eurekaServer.com:7001/eureka   defaultZone: http://eurekaServerSlave.com:7001/eureka
       defaultZone: http://eurekaServer.com:7001/eureka
+  server:
+    # eureka的自我保护配置，关闭后，不可用服务会被立即剔除
+    enable-self-preservation: false
+    # eureka中注册的服务的驱逐间隔
+    eviction-interval-timer-in-ms: 2000

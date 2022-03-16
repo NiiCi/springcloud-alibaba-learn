@@ -29,4 +29,9 @@ eureka:
       #defaultZone: http://localhost:7001/eureka
       # 将服务注册到eureka集群中
       defaultZone: http://eurekaServer.com:7001/eureka, http://eurekaServerSlave.com:7002/eureka
+  instance:
+    # instance-id 指定注册到eureka的服务名称
+    instance-id: payment-service-7002
+    # 访问路径可以显示IP地址
+    prefer-ip-address: true
 

@@ -14,5 +14,11 @@ eureka:
       # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
       # 配置eureka集群，见cloud-eureka-server-slave中的yml文件描述
       defaultZone: http://eurekaServerSlave.com:7002/eureka
+  server:
+    # eureka的自我保护配置，关闭后，不可用服务会被立即剔除
+    enable-self-preservation: false
+    # eureka中注册的服务的驱逐间隔
+    eviction-interval-timer-in-ms: 2000
+    # 生产环境不建议关闭自我保护
 
 
