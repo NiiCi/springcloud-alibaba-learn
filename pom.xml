@@ -15,6 +15,7 @@
     <module>cloud-eureka-server</module>
     <module>cloud-eureka-server-slave</module>
     <module>cloud-zookeeper-payment</module>
+      <module>cloud-zookeeper-order</module>
   </modules>
   <packaging>pom</packaging>
 
