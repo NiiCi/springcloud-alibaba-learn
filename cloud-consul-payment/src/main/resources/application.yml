@@ -1,0 +1,32 @@
+server:
+  port: 8006
+  servlet:
+    context-path: /payment
+spring:
+  application:
+    name: consul-payment-service
+
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://192.168.18.164:3306/learn?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: admin
+    password: admin
+  cloud:
+    consul:
+      host: 192.168.18.164
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        prefer-ip-address: true
+        heartbeat:
+          enabled: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # 所有entity别名类所在包
+  type-aliases-package: com.niici.springcloud.entity
+
+
+
