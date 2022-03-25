@@ -20,4 +20,8 @@ public interface PaymentOpenfeignService {
     // 声明payment服务controller中的接口
     @PostMapping("/payment/addPayment")
     CommonResult addPayment(@RequestBody Payment payment);
+
+    // 用于测试openfeign超时的接口
+    @PostMapping("/payment/timeout")
+    CommonResult timeout();
 }

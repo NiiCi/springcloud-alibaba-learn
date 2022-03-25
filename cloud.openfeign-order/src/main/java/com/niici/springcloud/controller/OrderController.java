@@ -27,4 +27,10 @@ public class OrderController {
     public CommonResult query(@PathVariable("id") Long id) {
         return paymentOpenfeignService.queryPaymentById(id);
     }
+
+    @PostMapping("/timeout")
+    public CommonResult timeout() {
+        // openfeign默认等待超时时间为1秒
+        return paymentOpenfeignService.timeout();
+    }
 }

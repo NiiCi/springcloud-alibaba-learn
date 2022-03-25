@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -29,6 +30,20 @@ public class PaymentController {
     public CommonResult addPayment(@RequestBody Payment payment) {
         paymentService.createPayment(payment);
         return new CommonResult<>(200, "SUCCESS, server port:" + serverPort);
+    }
+
+    /**
+     * 定义一个用于测试openfeign超时的接口
+     * @return
+     */
+    @PostMapping("timeout")
+    public CommonResult<String> timeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            log.error("test openfeign timeout");
+        }
+        return new CommonResult(200, "request is timeout, server port:" + serverPort);
     }
 
 }

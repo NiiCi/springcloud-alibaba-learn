@@ -15,3 +15,13 @@ eureka:
     service-url:
       # defaultZone: http://localhost:7001/eureka
       defaultZone: http://eurekaServer.com:7001/eureka, http://eurekaServerSlave.com:7001/eureka
+
+# 配置openfeign服务调用的超时时间
+feign:
+  client:
+    config:
+      default:
+        # 建立连接的超时时间, 单位毫秒
+        connectTimeout: 5000
+        # 建立连接后, 从服务器读取资源的超时时间
+        readTimeout: 5000
