@@ -24,7 +24,7 @@ public class OrderController {
      * 调用eureka中注册的payment服务
      * 需要配合@LoadBalanced注解使用，加在restTemplate上，实现负载均衡，否则会报unknowhostException
      */
-    private static final String HOST = "http://payment-service";
+    private static final String HOST = "http://PAYMENT-SERVICE";
 
     @PostMapping("/addPayment")
     public CommonResult addPayment(@RequestBody Payment payment) {
