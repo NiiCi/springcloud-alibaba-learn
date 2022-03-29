@@ -17,6 +17,7 @@
     <module>cloud-zookeeper-payment</module>
     <module>cloud-zookeeper-order</module>
     <module>cloud-consul-payment</module>
+    <module>cloud.openfeign-order</module>
   </modules>
   <packaging>pom</packaging>
 
