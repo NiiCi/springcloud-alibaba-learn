@@ -6,12 +6,13 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * feign日志配置类
+ * 也可以在yml中配置
  * @author niici
  * @since 2022/03/30
  */
-@Configuration
+//@Configuration
 public class FeignLogConfiguration {
-    @Bean
+    //@Bean
     Logger.Level feignLogLevel() {
         return Logger.Level.FULL;
     }
