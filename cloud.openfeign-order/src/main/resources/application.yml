@@ -25,3 +25,10 @@ feign:
         connectTimeout: 5000
         # 建立连接后, 从服务器读取资源的超时时间
         readTimeout: 5000
+
+# 配置openfeign日志打印
+logging:
+  level:
+    #可用*表示通配
+    com.niici.springcloud.service.*: debug
+
