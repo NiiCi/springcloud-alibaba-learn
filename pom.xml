@@ -18,6 +18,8 @@
     <module>cloud-zookeeper-order</module>
     <module>cloud-consul-payment</module>
     <module>cloud.openfeign-order</module>
+      <module>cloud-hystrix-payment</module>
+      <module>cloud-openfeign-hystrix-order</module>
   </modules>
   <packaging>pom</packaging>
 

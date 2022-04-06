@@ -1,0 +1,37 @@
+server:
+  port: 8007
+  servlet:
+    context-path: /payment
+spring:
+  application:
+    name: hystrix-payment-service
+
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://192.168.18.164:3306/learn?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: admin
+    password: admin
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # 所有entity别名类所在包
+  type-aliases-package: com.niici.springcloud.entity
+eureka:
+  client:
+    # true 表示将自己注册到eurekaServer
+    register-with-eureka: true
+    # true 表示从eurekaServer拉取服务，默认为true，单节点无所谓，集群必须设置为true才能配置ribbon使用，实现负载均衡+6099999999999999
+    fetch-registry: true
+    service-url:
+      # eureka服务默认地址
+      #defaultZone: http://localhost:7001/eureka
+      # 将服务注册到eureka集群中
+      defaultZone: http://eurekaServer.com:7001/eureka, http://eurekaServerSlave.com:7002/eureka
+  instance:
+    # instance-id 指定注册到eureka的服务名称
+    instance-id: hystrix-payment-service-8007
+    # 访问路径可以显示IP地址
+    prefer-ip-address: true
+

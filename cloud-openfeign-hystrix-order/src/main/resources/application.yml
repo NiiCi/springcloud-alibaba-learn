@@ -1,0 +1,35 @@
+server:
+  port: 802
+  servlet:
+    context-path: /order
+spring:
+  application:
+    name: openfeign-hystrix-order-service
+
+eureka:
+  client:
+    # 不注册至eureka，此处只做服务调用
+    register-with-eureka: false
+    # 拉取eureka中的服务
+    fetch-registry: true
+    service-url:
+      # defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eurekaServer.com:7001/eureka, http://eurekaServerSlave.com:7001/eureka
+
+# 配置openfeign服务调用的超时时间
+feign:
+  client:
+    config:
+      default:
+        # 建立连接的超时时间, 单位毫秒
+        connectTimeout: 5000
+        # 建立连接后, 从服务器读取资源的超时时间
+        readTimeout: 5000
+        loggerLevel: FULL
+
+# 配置openfeign日志打印
+logging:
+  level:
+    #可用*表示通配
+    com.niici.springcloud.service.*: debug
+
