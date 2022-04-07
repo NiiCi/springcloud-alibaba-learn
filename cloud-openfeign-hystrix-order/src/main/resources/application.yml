@@ -26,6 +26,9 @@ feign:
         # 建立连接后, 从服务器读取资源的超时时间
         readTimeout: 5000
         loggerLevel: FULL
+  # 开启hystrix支持
+  hystrix:
+    enabled: true
 
 # 配置openfeign日志打印
 logging:

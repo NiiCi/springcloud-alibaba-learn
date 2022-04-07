@@ -1,5 +1,6 @@
 package com.niici.springcloud.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.niici.springcloud.common.CommonResult;
 import com.niici.springcloud.entity.Payment;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -49,6 +49,7 @@ public class PaymentServiceImpl implements PaymentService {
         } catch (Exception e) {
             log.error(e.getMessage());
         }
+        //int age = 10 / 0;
         log.error("timeoutTest, 线程池: {}, payment id: {}", Thread.currentThread().getName(), paymentId);
     }
 

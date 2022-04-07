@@ -1,5 +1,7 @@
 package com.niici.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.niici.springcloud.common.CommonResult;
 import com.niici.springcloud.entity.Payment;
 import com.niici.springcloud.service.PaymentOpenfeignService;
@@ -48,8 +50,20 @@ public class OrderController {
      * @return
      */
     @GetMapping("timeoutTest/{id}")
+    @HystrixCommand(fallbackMethod = "timeoutFallbackHandle",
+            commandProperties = {
+                    // 配置1.5s超时时间, 1.5s后未返回, 则走fallback方法
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
+            })
     public CommonResult<String> errorTest(@PathVariable("id") Long id) {
         paymentOpenfeignService.timeoutTest(id);
         return new CommonResult(200, "hystrix error test.");
     }
+
+    // 定义fallback方法时, 方法的入参、返回值需要和原方法保持一致
+    private CommonResult<String> timeoutFallbackHandle(@PathVariable("id") Long id) {
+        log.info("timeoutFallbackHandle, 消费者端调用失败, 线程池: {}, payment id: {}", Thread.currentThread().getName(), id);
+        return new CommonResult(200, "hystrix fallback method is execute.");
+    }
+
 }
