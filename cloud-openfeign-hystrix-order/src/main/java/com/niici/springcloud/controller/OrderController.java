@@ -1,5 +1,6 @@
 package com.niici.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.niici.springcloud.common.CommonResult;
@@ -12,6 +13,10 @@ import javax.annotation.Resource;
 
 @RestController
 @Slf4j
+@DefaultProperties(defaultFallback = "globalFallbackHandle",
+    commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
+    })
 public class OrderController {
     @Resource
     private PaymentOpenfeignService paymentOpenfeignService;
@@ -60,10 +65,27 @@ public class OrderController {
         return new CommonResult(200, "hystrix error test.");
     }
 
+    /**
+     * 定义一个用于测试hystrix 默认fallback降级方式的超时降级的方法
+     * @return
+     */
+    @GetMapping("globalTest/{id}")
+    @HystrixCommand
+    public CommonResult<String> globalTest(@PathVariable("id") Long id) {
+        paymentOpenfeignService.timeoutTest(id);
+        return new CommonResult(200, "hystrix error test.");
+    }
+
     // 定义fallback方法时, 方法的入参、返回值需要和原方法保持一致
     private CommonResult<String> timeoutFallbackHandle(@PathVariable("id") Long id) {
         log.info("timeoutFallbackHandle, 消费者端调用失败, 线程池: {}, payment id: {}", Thread.currentThread().getName(), id);
         return new CommonResult(200, "hystrix fallback method is execute.");
+    }
+
+    // 定义global fallback方法, 不需要指定入参
+    private CommonResult<String> globalFallbackHandle() {
+        log.info("globalFallbackHandle, 通用fallback处理, 消费者端调用失败.");
+        return new CommonResult(200, "hystrix global fallback method is execute.");
     }
 
 }
