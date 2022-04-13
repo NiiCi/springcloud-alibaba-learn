@@ -18,4 +18,11 @@ public interface PaymentService {
      * @return
      */
     void timeoutTest(Long paymentId);
+
+    /**
+     * hystrix 服务熔断test
+     * @param paymentId
+     * @return
+     */
+    String paymentCircuitBreaker(Long paymentId);
 }

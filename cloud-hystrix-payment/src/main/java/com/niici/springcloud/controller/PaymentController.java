@@ -66,4 +66,16 @@ public class PaymentController {
         return new CommonResult(200, "hystrix error test.");
     }
 
+    /**
+     * 定义一个用于测试hystrix 服务熔断的方法
+     * 如何测试：
+     * 1. 用负数请求10次以后, 触发服务熔断, 10s内的所有请求都会被拒绝, 此时用正数请求直接调用fallback方法
+     * 2. 10s之后用正数请求, 正常返回, 服务恢复
+     * @return
+     */
+    @GetMapping("circuitBreaker/{id}")
+    public CommonResult<String> paymentCircuitBreaker(@PathVariable("id") Long id) {
+        return new CommonResult(200, paymentService.paymentCircuitBreaker(id));
+    }
+
 }
