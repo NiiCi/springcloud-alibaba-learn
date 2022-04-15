@@ -62,7 +62,7 @@ public class PaymentServiceImpl implements PaymentService {
             // HystrixProperty属性在HystrixPropertiesManager中可以找到, HystrixCommondProperties中可以查看每个属性的默认值
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"), // 是否开启断路器
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"), // 滑动窗口中, 最少有多少个请求, 才可能触发熔断
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), // 熔断后多少时间内直接reject请求, 之后进入half-open状态, 默认为5s
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), // 熔断后多少时间内直接reject请求, 之后进入half-open状态, 默认为5s, 5s后如果请求成功则恢复链路
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60") // 异常比例达到多少, 触发熔断, 默认比例为50%
     })
     @Override
