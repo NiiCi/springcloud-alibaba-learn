@@ -58,6 +58,7 @@ public class PaymentServiceImpl implements PaymentService {
         log.info("timeoutFallbackHandle, 线程池: {}, payment id: {}", Thread.currentThread().getName(), paymentId);
     }
 
+    @Override
     @HystrixCommand(fallbackMethod = "paymentCircuitBreakerFallback", commandProperties = {
             // HystrixProperty属性在HystrixPropertiesManager中可以找到, HystrixCommondProperties中可以查看每个属性的默认值
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"), // 是否开启断路器
@@ -65,7 +66,6 @@ public class PaymentServiceImpl implements PaymentService {
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), // 熔断后多少时间内直接reject请求, 之后进入half-open状态, 默认为5s, 5s后如果请求成功则恢复链路
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60") // 异常比例达到多少, 触发熔断, 默认比例为50%
     })
-    @Override
     public String paymentCircuitBreaker(Long paymentId) {
         if (paymentId < 0) {
             throw new RuntimeException("payment服务熔断测试, id不能为负数");

@@ -20,6 +20,7 @@
     <module>cloud.openfeign-order</module>
       <module>cloud-hystrix-payment</module>
       <module>cloud-openfeign-hystrix-order</module>
+      <module>cloud-hystrix-dashboard</module>
   </modules>
   <packaging>pom</packaging>
 
