@@ -21,6 +21,7 @@
       <module>cloud-hystrix-payment</module>
       <module>cloud-openfeign-hystrix-order</module>
       <module>cloud-hystrix-dashboard</module>
+      <module>cloud-gateway-gateway</module>
   </modules>
   <packaging>pom</packaging>
 

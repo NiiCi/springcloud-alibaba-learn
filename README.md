@@ -1119,3 +1119,37 @@ hystrix能够保证在一个依赖出问题的情况下，不会导致整体服�
   秒杀高并发等操作，对同一时间的大量请求，一秒钟N个，有序处理。
 ```
 
+###Gateway
+```
+是在Spring生态系统之上构建的API网关服务, 基于Spring5, Spring Boot 2和Project Reactor等技术。
+Gateway旨在提供一种简单而优先的方式, 来对Api进行路由, 以及提供一些强大的过滤器功能, 例如：熔断、限流、重试等。
+
+SpringCloud Gateway使用了Webflux中的Reactor-netty响应式编程组件, 底层使用了Netty通讯框架。
+```
+
+####Gateway具有的特性
+
+- 动态路由: 能够匹配任何请求属性;
+- 可以对路由指定Predicate(断言) 和 Filter(过滤器);
+- 集成hystrix的断路器;
+- 集成SpringCloud的服务发现;
+- 请求限流;
+- 支持路径重写;
+
+
+####<font color="red">三大核心概念</font>
+- Route(路由)
+```
+路由是构建网关的基本模块, 由ID、目标URI, 一系列的断言和过滤器组成, 如果断言为true则匹配该路由
+```
+- Predicate(断言)
+```
+参考的是Java8的java.util.function.Predicate
+可以匹配HTTP请求中的所有内容(例如请求头或请求参数), 如果请求与断言相匹配则进行路由
+```
+- Filter(过滤)
+```
+指的是Spring框架中GatewayFilter实例, 使用过滤器, 可以在请求被路由前或者之后对请求进行修改
+```
+
+Gateway核心逻辑: 路由转发 + 执行过滤器链
