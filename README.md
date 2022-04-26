@@ -1158,3 +1158,9 @@ Gateway核心逻辑: 路由转发 + 执行过滤器链
 默认情况下Gateway会根据注册中心的服务列表,
 
 以注册中心上微服务名为路径创建动态路由进行转发, 从而实现动态路由的功能
+
+#### Predicate 和 Filters
+```http request
+官方文档：
+https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#configuring-route-predicate-factories-and-gateway-filter-factories
+```
