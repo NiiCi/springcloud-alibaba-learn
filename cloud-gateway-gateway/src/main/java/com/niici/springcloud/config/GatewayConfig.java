@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * gateway路由配置类
  */
-@Configuration
+/*@Configuration
 public class GatewayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder) {
@@ -16,4 +16,4 @@ public class GatewayConfig {
         routes.route("PAYMENT-SERVICE", route -> route.path("/payment/**").uri("http://localhost:8001"));
         return routes.build();
     }
-}
+}*/
