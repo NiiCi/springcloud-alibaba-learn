@@ -18,10 +18,11 @@
     <module>cloud-zookeeper-order</module>
     <module>cloud-consul-payment</module>
     <module>cloud.openfeign-order</module>
-      <module>cloud-hystrix-payment</module>
-      <module>cloud-openfeign-hystrix-order</module>
-      <module>cloud-hystrix-dashboard</module>
-      <module>cloud-gateway-gateway</module>
+    <module>cloud-hystrix-payment</module>
+    <module>cloud-openfeign-hystrix-order</module>
+    <module>cloud-hystrix-dashboard</module>
+    <module>cloud-gateway-gateway</module>
+    <module>cloud-sharding-jdbc</module>
   </modules>
   <packaging>pom</packaging>
 
