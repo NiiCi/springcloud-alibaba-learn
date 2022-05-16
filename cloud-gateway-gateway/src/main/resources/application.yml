@@ -18,7 +18,6 @@ spring:
           predicates:
           - Path=/payment/** # 断言, 路径相匹配的路由
           - Method=POST
-          #filters:
 eureka:
   client:
     # true 表示将自己注册到eurekaServer
